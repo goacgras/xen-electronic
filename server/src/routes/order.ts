@@ -38,7 +38,16 @@ const placeOrder = async (req: Request, res: Response) => {
             })
         );
 
-        return res.json(newOrders);
+        const accumulativePrice = newOrders.reduce(
+            (prev, curr) => prev + curr.totalPrice,
+            0
+        );
+
+        return res.json({
+            invoiceNumber,
+            accumulativePrice,
+            newOrders,
+        });
     } catch (err) {
         console.log(err);
         return res.status(500).json({ error: "something went wrong" });
