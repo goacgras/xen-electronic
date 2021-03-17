@@ -5,5 +5,69 @@
         "title": "XenElectronics API",
         "description": "XenElectronics open API"
     },
-    "host": "localhost:5000"
+    "host": "localhost:5000",
+    "tags": [
+        {
+            "name": "Product",
+            "description": "API for product"
+        }
+    ],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "definitions": {
+        "products": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                }
+            }
+        }
+    },
+    "paths": {
+        "/api/product/{category}": {
+            "parameters": [
+                {
+                    "name": "category",
+                    "in": "path",
+                    "required": true,
+                    "description": "category provided from list",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": ["Product"],
+                "summary": "get products with given category",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "category",
+                        "required": true,
+                        "description": "products with category",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "$ref": "#/definitions/products"
+                        }
+                    },
+                    "500": {
+                        "description": "something went wrong"
+                    }
+                }
+            }
+        }
+    }
 }
