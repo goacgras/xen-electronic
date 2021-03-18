@@ -2,6 +2,9 @@
 
 Steps to run this project:
 
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm run dev` command
+On docker container:
+after pull / copy file to editor
+
+1. Run docker-compose.yml => `docker-compose up -d`
+2. Create migration tables => `docker exec server_server_1 npm run typeorm migration:run`
+3. Run seed => `docker exec server_server_1 npm run seed`
