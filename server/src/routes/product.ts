@@ -14,6 +14,10 @@ const getProduct = async (req: Request, res: Response) => {
             },
         });
 
+        if (!products) {
+            return res.status(400).json({ product: "Product not found" });
+        }
+
         return res.json(products);
     } catch (err) {
         console.log(err);
