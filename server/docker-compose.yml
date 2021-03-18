@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+    db:
+        image: "postgres"
+        environment:
+            POSTGRES_PASSWORD: "root"
+            POSTGRES_USER: "docker"
+        volumes:
+            - data:/var/lib/postgresql/data
+    server:
+        build: .
+        #start db first
+        # depends_on:
+        #     - db
+        ports:
+            - "5000:5000"
+
+#volumes for entire network
+volumes:
+    data:

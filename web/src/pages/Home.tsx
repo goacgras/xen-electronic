@@ -9,7 +9,7 @@ import { Category } from "../components/Category";
 import { useAuthDispatch } from "../context/order";
 
 const Home: React.FC = () => {
-    const [category, setCategory] = useState("a");
+    const [category, setCategory] = useState("laptop");
     const [orders, setOrders] = useState<OrderInput[]>([]);
     const [modal, setModal] = useState(false);
     const { data } = useSWR<Product[]>(`/product/${category}`);
@@ -20,6 +20,8 @@ const Home: React.FC = () => {
     if (!data) {
         return <div>Loading..</div>;
     }
+
+    console.log("Category:", category);
 
     const addToCart = (product: Product) => {
         const foundProd = orders.find((o) => o.name === product.name);
@@ -58,6 +60,9 @@ const Home: React.FC = () => {
     };
 
     const checkout = async () => {
+        if (orders.length <= 0) {
+            return;
+        }
         try {
             const res = await axios.post("/order", {
                 orders,
@@ -86,44 +91,37 @@ const Home: React.FC = () => {
                             {/*body*/}
                             <div className='relative flex-auto p-5'>
                                 {orders.map((o, i) => (
-                                    <>
-                                        <div
-                                            key={o.name}
-                                            className='flex justify-between'
-                                        >
-                                            <p>{o.name}</p>
+                                    <div
+                                        key={o.name}
+                                        className='flex justify-between mb-4'
+                                    >
+                                        <p>{o.name}</p>
 
-                                            <div className='flex justify-center mx-auto'>
-                                                <button
-                                                    className='mr-5 border-none focus:outline-none'
-                                                    onClick={() =>
-                                                        subtractQuantity(i)
-                                                    }
-                                                >
-                                                    -
-                                                </button>
-                                                <p className='mr-5'>
-                                                    {o.quantity}
-                                                </p>
-
-                                                <button
-                                                    className='focus:outline-none'
-                                                    onClick={() =>
-                                                        addQuantity(i)
-                                                    }
-                                                >
-                                                    +
-                                                </button>
-                                            </div>
-                                            <div
-                                                className='ml-3 border-none focus:outline-none'
-                                                onClick={() => removeOrder(i)}
+                                        <div className='flex justify-center mx-auto'>
+                                            <button
+                                                className='mr-5 border-none focus:outline-none'
+                                                onClick={() =>
+                                                    subtractQuantity(i)
+                                                }
                                             >
-                                                <i className='far fa-trash-alt'></i>
-                                            </div>
+                                                -
+                                            </button>
+                                            <p className='mr-5'>{o.quantity}</p>
+
+                                            <button
+                                                className='focus:outline-none'
+                                                onClick={() => addQuantity(i)}
+                                            >
+                                                +
+                                            </button>
                                         </div>
-                                        <br />
-                                    </>
+                                        <div
+                                            className='ml-3 border-none focus:outline-none'
+                                            onClick={() => removeOrder(i)}
+                                        >
+                                            <i className='far fa-trash-alt'></i>
+                                        </div>
+                                    </div>
                                 ))}
                             </div>
                             {/*footer*/}

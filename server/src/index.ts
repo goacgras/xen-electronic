@@ -1,44 +1,26 @@
-// import "reflect-metadata";
-// import express, { Application } from "express";
-// import morgan from "morgan";
-// import cors from "cors";
-
-// import swaggerUi from "swagger-ui-express";
-// import * as swaggerDoc from "../swagger.json";
-// import { createConnection } from "typeorm";
-
-// import productRoutes from "./routes/product";
-// import orderRoutes from "./routes/order";
-
-// const app: Application = express();
-
-// const port = process.env.PORT || 5000;
-
-// app.use(express.json());
-// app.use(morgan("dev"));
-// app.use(
-//     cors({
-//         origin: "http://localhost:3000",
-//         credentials: true,
-//         optionsSuccessStatus: 200,
-//     })
-// );
-
-// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
-// app.use("/api/product", productRoutes);
-// app.use("/api/order", orderRoutes);
-
 import app from "./app";
 import { createConnection } from "typeorm";
 
-const port = process.env.PORT || 5000;
+const main = async () => {
+    const port = process.env.PORT || 5000;
 
-app.listen(port, async () => {
-    console.log(`server running at port ${port}`);
-    try {
-        await createConnection();
-        console.log("Database connected");
-    } catch (err) {
-        console.log(err);
-    }
+    app.listen(port, async () => {
+        console.log(`server running at port ${port}`);
+        let retries = 5;
+        while (retries) {
+            try {
+                await createConnection();
+                break;
+            } catch (err) {
+                console.log(err);
+                retries -= 1;
+                console.log(`retries left: ${retries}`);
+                await new Promise((res) => setTimeout(res, 5000));
+            }
+            console.log("Database connected");
+        }
+    });
+};
+main().catch((err) => {
+    console.log(err);
 });

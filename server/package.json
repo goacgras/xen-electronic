@@ -5,6 +5,7 @@
     "devDependencies": {
         "@types/cors": "^2.8.10",
         "@types/express": "^4.17.11",
+        "@types/faker": "^5.1.7",
         "@types/jest": "^26.0.21",
         "@types/morgan": "^1.9.2",
         "@types/node": "^14.14.35",
@@ -20,16 +21,22 @@
     },
     "dependencies": {
         "class-transformer": "^0.4.0",
+        "class-validator": "^0.13.1",
         "cors": "^2.8.5",
         "express": "^4.17.1",
         "pg": "^8.4.0",
         "reflect-metadata": "^0.1.10",
         "swagger-ui-express": "^4.1.6",
-        "typeorm": "0.2.30"
+        "typeorm": "0.2.30",
+        "typeorm-seeding": "^1.6.1"
     },
     "scripts": {
+        "watch": "tsc -w",
         "start": "ts-node src/index.ts",
         "dev": "nodemon --exec ts-node src/index.ts",
-        "test": "jest"
+        "test": "jest",
+        "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+        "seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+        "build": "tsc -b"
     }
 }
