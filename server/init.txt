@@ -1,1 +1,8 @@
-1. Documentation
+run docker-compose file:
+docker-compose up -d
+
+RUN MIGRATION:
+$ docker exec server_server_1 npm run typeorm migration:run
+
+RUN SEED:
+$ docker exec server_server_1 npm run seed

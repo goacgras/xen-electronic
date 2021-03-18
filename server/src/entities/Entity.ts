@@ -1,10 +1,10 @@
-import { classToPlain, Exclude } from "class-transformer";
 import {
     BaseEntity,
     CreateDateColumn,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
 } from "typeorm";
+import { Exclude, classToPlain } from "class-transformer";
 
 export default abstract class Entity extends BaseEntity {
     @Exclude()

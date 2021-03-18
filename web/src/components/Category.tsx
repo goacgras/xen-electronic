@@ -26,8 +26,8 @@ export const Category: React.FC<CategoryProps> = ({ category, setValue }) => {
                     value={category}
                     onChange={(e) => setValue(e.target.value)}
                 >
-                    <option value='a'>a</option>
-                    <option value='b'>b</option>
+                    <option value='laptop'>Laptop</option>
+                    <option value='phone'>Phone</option>
                 </select>
             </div>
         </div>

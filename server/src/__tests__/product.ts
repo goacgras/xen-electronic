@@ -1,6 +1,5 @@
 import app from "../app";
 import request from "supertest";
-import { json } from "express";
 
 // describe("GET /api/product/:category", () => {
 //     it("it should GET product by category", async (done) => {
@@ -13,12 +12,10 @@ import { json } from "express";
 // });
 
 describe("GET / - a simple api endpoint", () => {
-    it("Hello API Request", async (done) => {
-        const c: string = "a";
-        const result = await request(app)
-            .get(`/api/product/${c}`)
-            .expect("Content-Type", /json/)
-            .expect(200);
-        done();
+    it("Hello API Request", async () => {
+        const c: string = "laptop";
+        const result = await request(app).get(`/api/product/${c}`);
+        expect(result.type).toEqual("application/json");
+        expect(result.status).toEqual(200);
     });
 });

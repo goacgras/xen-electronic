@@ -12,9 +12,6 @@ import orderRoutes from "./routes/order";
 const app: Application = express();
 
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.text());
-// app.use(express.json({ type: "application/json" }));
 app.use(morgan("dev"));
 app.use(
     cors({
