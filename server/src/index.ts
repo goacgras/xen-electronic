@@ -6,18 +6,11 @@ const main = async () => {
 
     app.listen(port, async () => {
         console.log(`server running at port ${port}`);
-        let retries = 5;
-        while (retries) {
-            try {
-                await createConnection();
-                break;
-            } catch (err) {
-                console.log(err);
-                retries -= 1;
-                console.log(`retries left: ${retries}`);
-                await new Promise((res) => setTimeout(res, 5000));
-            }
+        try {
+            await createConnection();
             console.log("Database connected");
+        } catch (err) {
+            console.log(err);
         }
     });
 };

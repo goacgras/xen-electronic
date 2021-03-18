@@ -1,10 +1,10 @@
 {
     "name": "default",
     "type": "postgres",
-    "host": "db",
-    "username": "docker",
+    "host": "localhost",
+    "username": "postgres",
     "password": "root",
-    "database": "docker",
+    "database": "xen-electronic",
     "synchronize": false,
     "logging": true,
     "entities": ["src/entities/**/*"],
