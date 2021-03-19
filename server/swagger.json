@@ -46,7 +46,7 @@
             ],
             "get": {
                 "tags": ["Product"],
-                "summary": "get products with given category",
+                "summary": "get products with given category (laptop/phone)",
                 "parameters": [
                     {
                         "in": "path",

@@ -11,8 +11,8 @@ services:
     server:
         build: .
         #start db first
-        # depends_on:
-        #     - db
+        depends_on:
+            - db
         ports:
             - "5000:5000"
 
