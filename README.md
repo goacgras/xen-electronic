@@ -14,7 +14,7 @@ To run this application, first you need to run the web api end points and then r
 - React js
 
 ## Installation:
-1. Clone project `https://github.com/goacgras/xen-electronic.git
+1. Clone project `https://github.com/goacgras/xen-electronic.git`
 2. Cd to server
 3. Run docker-compose.yml => `docker-compose up -d`
 4. Create migration tables => `docker exec server_server_1 npm run typeorm migration:run`
