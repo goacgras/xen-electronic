@@ -4,8 +4,10 @@ services:
     db:
         image: "postgres"
         environment:
+            POSTGRES_USER: "postgres"
             POSTGRES_PASSWORD: "root"
-            POSTGRES_USER: "docker"
+            POSTGRES_DB: "xen-electronic"
+
         volumes:
             - data:/var/lib/postgresql/data
     server:

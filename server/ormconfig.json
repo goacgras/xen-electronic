@@ -1,7 +1,6 @@
 {
-    "name": "default",
     "type": "postgres",
-    "host": "localhost",
+    "host": "db",
     "username": "postgres",
     "password": "root",
     "database": "xen-electronic",
