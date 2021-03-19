@@ -1,11 +1,11 @@
 # Xen-electronic open API
 
-# Steps to run the server on docker container:
+## Steps to run the server on docker container:
 1. Run docker-compose.yml => `docker-compose up -d`
 2. Create migration tables => `docker exec server_server_1 npm run typeorm migration:run`
 3. Run seed => `docker exec server_server_1 npm run seed`
 
-# Run this on local machine
+## Run this on local machine
 1. Go to `ormconfig.json` 
 2. Change `"host"` to `"localhost"`
 3. and run `npm install`
