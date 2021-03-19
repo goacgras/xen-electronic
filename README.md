@@ -1,6 +1,6 @@
 # Xen-electronic
 
-To run this application, first you need to run the web api end points and then run the web client.
+To run this application, first you need to clone the project `https://github.com/goacgras/xen-electronic.git` run the web api end points and then run the web client.
 For futher instruction go to server folder and follow the instructions
 
 # Stack:
