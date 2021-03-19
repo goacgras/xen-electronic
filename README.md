@@ -7,7 +7,7 @@ For futher instruction go to server folder and follow the instructions
 ### Server:
 - Node.js
 - Typescript
-- Postgres
+- PostgreSQL
 - Typeorm
 - Swagger
 
